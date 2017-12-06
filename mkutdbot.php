@@ -47,20 +47,21 @@ curl_close ($ch);
 function getUserAccountID($userAccount)
 {
 	global $strAccessToken;
-	$strUrl = 'https://api.line.me/v2/bot/profile/'.$userAccount;
-	$arrHeader = array();
+	 
+ 	$arrHeader = array();
 	$arrHeader[] = "Content-Type: application/json";
-	$arrHeader[] = "Authorization: Bearer {$strAccessToken}";
-	$ch = curl_init();
-	curl_setopt($ch, CURLOPT_URL,$strUrl);
-	curl_setopt($ch, CURLOPT_HEADER, false);
-	curl_setopt($ch, CURLOPT_POST, true);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $arrHeader);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
-	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-	$result = curl_exec($ch);
-	curl_close ($ch);
+	$arrHeader[] = "Authorization: Bearer {$strAccessToken}";	
+ 	    $ch = curl_init('https://api.line.me/v2/bot/profile/'.$userAccount);
+		curl_setopt($ch, CURLOPT_POST, true);
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($response));
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+			'Content-Type: application/json; charser=UTF-8',
+			'Authorization: Bearer ' . $accessToken
+		));
+		$result = curl_exec($ch);
+		curl_close($ch); 	
 	$obj = json_decode($result);
 	$uname = $obj->displayName;
 	$img = $obj->pictureUrl;
