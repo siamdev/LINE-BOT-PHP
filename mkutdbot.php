@@ -86,7 +86,7 @@ function UserResponse($userAccount,$func)
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
-		curl_setopt($ch, CURLOPT_HTTPHEADER,'Content-Type: application/json; charser=UTF-8');
+		//curl_setopt($ch, CURLOPT_HTTPHEADER,'Content-Type: application/json; charser=UTF-8');
 		$result = curl_exec($ch);
 		curl_close($ch);  
  }
