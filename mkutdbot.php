@@ -22,14 +22,12 @@ $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
  
 if($arrJson['events'][0]['message']['text'] == "fc"){
-	
-  $memberprofile =  getUserAccountID($arrJson['events'][0]['source']['userId']);
+	$memberprofile =  getUserAccountID($arrJson['events'][0]['source']['userId']);
   $arrPostData = array();
   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
   $arrPostData['messages'][0]['text'] = "สวัสดีค่ะ ยินดีต้อนรับสมาชิกคนใหม่ / wellcome to muangkan united fanclub".$memberprofile;
-  
-  
+   
 } 
  
  
@@ -63,10 +61,12 @@ function getUserAccountID($userAccount)
 	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 	$result = curl_exec($ch);
 	curl_close ($ch);
-	
-	$userMember=$result["displayName"].'/'.$result["userId"].'/'.$result["pictureUrl"];
-	return $userMember;
-	
-	
-}
+	$obj = json_decode($result);
+	$uname = $obj->displayName;
+	$img = $obj->pictureUrl;
+	$desc =$obj->statusMessage;
+	$userMember = $uname.'<br>'.$img.'<br>'.$desc;
+    return $userMember;
+
+ }
  
