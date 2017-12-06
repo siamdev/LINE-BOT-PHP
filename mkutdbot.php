@@ -22,19 +22,13 @@ $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
  
 if($arrJson['events'][0]['message']['text'] == "fc"){
-	$memberprofile =  getUserAccountID($arrJson['events'][0]['source']['userId']);
-
 	
+  $memberprofile =  getUserAccountID($arrJson['events'][0]['source']['userId']);
   $arrPostData = array();
   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
   $arrPostData['messages'][0]['text'] = "สวัสดีค่ะ ยินดีต้อนรับสมาชิกคนใหม่ / wellcome to muangkan united fanclub".$memberprofile;
   
-  
-  
-   //getUserAccountID($arrJson['events'][0]['source']['userId']);
-  
-  //$arrJson['events'][0]['source']['userId']
   
 } 
  
@@ -72,9 +66,6 @@ function getUserAccountID($userAccount)
 	
 	$userMember=$result["displayName"].'/'.$result["userId"].'/'.$result["pictureUrl"];
 	return $userMember;
-	//"displayName":"LINE taro",
-  //  "userId":"U4af4980629...",
-   // "pictureUrl":"http://obs.line-apps.com/...",
 	
 	
 }
