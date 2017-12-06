@@ -7,11 +7,6 @@ $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
  
- 
- 
-$userAccountName ='9ead'; 
-//$strAccessToken = "ACCESS_TOKEN";
- 
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
  
