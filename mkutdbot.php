@@ -74,20 +74,4 @@ function UserResponse($userAccount,$func)
         return $userMember;
 
  }
-function  fcUser($id,$name,$upic,$desc)
-{
- 		$arrPostData = array();
-   		$arrPostData['uid'] =$id;
-  		$arrPostData['uname'] =$name;
-		$arrPostData['upic'] =$upic;
-  		$arrPostData['udesc'] =$desc;
- 	       $ch = curl_init('https://mkutd.com/fcmember');
-		curl_setopt($ch, CURLOPT_POST, true);
-		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
-		curl_setopt($ch, CURLOPT_HTTPHEADER,'Content-Type: application/json; charser=UTF-8');
-		$result = curl_exec($ch);
-		curl_close($ch);  
- }
- 
+
