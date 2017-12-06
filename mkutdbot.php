@@ -20,21 +20,26 @@ $strUrl = "https://api.line.me/v2/bot/message/reply";
 $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
-  	$memberprofile =  getUserAccountID($arrJson['events'][0]['source']['userId']);
-	list($membername,$memberimg,$memmberdesc)=explode(",",$memberprofile);
 	
 if($arrJson['events'][0]['message']['text'] == ""){
    $arrPostData = array();
+  	$memberprofile =  getUserAccountID($arrJson['events'][0]['source']['userId']);
+	list($membername,$memberimg,$memmberdesc)=explode(",",$memberprofile);
+
   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
   $arrPostData['messages'][0]['text'] = "สวัสดีค่ะ/welcome ".$membername." ยินดีต้อนรับสมาชิกคนใหม่ / wellcome to muangkan united fanclub";
 }else if($arrJson['events'][0]['message']['text'] == "fc"){
    $arrPostData = array();
+  	$memberprofile =  getUserAccountID($arrJson['events'][0]['source']['userId']);
+	list($membername,$memberimg,$memmberdesc)=explode(",",$memberprofile);
   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
   $arrPostData['messages'][0]['text'] = "สวัสดีค่ะ/welcome ".$membername." ยินดีต้อนรับสมาชิกคนใหม่ / wellcome to muangkan united fanclub";
 }else if($arrJson['events'][0]['message']['text'] == "game"){
   $arrPostData = array();
+  	$memberprofile =  getUserAccountID($arrJson['events'][0]['source']['userId']);
+	list($membername,$memberimg,$memmberdesc)=explode(",",$memberprofile);
   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
   $arrPostData['messages'][0]['text'] = "สวัสดีค่ะ/welcome ".$membername." ขอบคุณสำหรับการร่วมเล่นเกมส์กับเรา รอประกาศผลรางวัลผ่านหน้าแฟนเพจสโมสรนะคะ,thank you for join we game please review fc fanpage after hour.";
