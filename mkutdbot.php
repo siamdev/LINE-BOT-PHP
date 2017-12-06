@@ -84,7 +84,7 @@ function UserResponse($userAccount,$func)
  	    $ch = curl_init('https://mkutd.com/fcmember.php');
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrPostData));
 		//curl_setopt($ch, CURLOPT_HTTPHEADER,'Content-Type: application/json; charser=UTF-8');
 		$result = curl_exec($ch);
