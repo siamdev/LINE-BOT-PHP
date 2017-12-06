@@ -46,11 +46,8 @@ curl_close ($ch);
 
 function getUserAccountID($userAccount)
 {
-	global $strAccessToken;
-	 
- 	$arrHeader = array();
-	$arrHeader[] = "Content-Type: application/json";
-	$arrHeader[] = "Authorization: Bearer {$strAccessToken}";	
+ 
+	 global $strAccessToken;
  	    $ch = curl_init('https://api.line.me/v2/bot/profile/'.$userAccount);
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
@@ -58,10 +55,11 @@ function getUserAccountID($userAccount)
 		curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($response));
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
 			'Content-Type: application/json; charser=UTF-8',
-			'Authorization: Bearer ' . $accessToken
+			'Authorization: Bearer ' . $strAccessToken
 		));
 		$result = curl_exec($ch);
-		curl_close($ch); 	
+		curl_close($ch); 
+
 	$obj = json_decode($result);
 	$uname = $obj->displayName;
 	$img = $obj->pictureUrl;
