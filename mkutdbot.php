@@ -81,7 +81,7 @@ function UserResponse($userAccount,$func)
   		$arrPostData['uname'] =$name;
 		$arrPostData['upic'] =$upic;
   		$arrPostData['udesc'] =$desc;
- 	    $ch = curl_init('https://mkutd.com/fcmember');
+ 	    $ch = curl_init('https://mkutd.com/fcmember.php');
 		curl_setopt($ch, CURLOPT_POST, true);
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
